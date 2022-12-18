@@ -15,5 +15,5 @@ services:
       traefik.http.routers.halls_desktop.tls.domains[0].main: "${DOMAIN}"
       traefik.http.routers.halls_desktop.tls.domains[0].sans: "*.${DOMAIN}"
       traefik.http.routers.halls_desktop.middlewares: "halls_desktop_auth"
-      traefik.http.services.halls_desktop.loadbalancer.server.port: "6501"
+      traefik.http.services.halls_desktop.loadbalancer.server.port: "6901"
       traefik.http.middlewares.halls_desktop_auth.basicauth.users: "user:$$2y$$05$$LBZka/94dyb0S/ZPqN2ixeVy..2Sok0xruiw7AhwyrbsPNd.SLF.W"
