@@ -5,7 +5,6 @@ services:
     container_name: halls-desktop 
     ports: 
       - 6901:6901
-    pull: true
     volumes:
       - "$PWD/config/.config:/home/dockeruser/.config:rw"
     env_file: .env
