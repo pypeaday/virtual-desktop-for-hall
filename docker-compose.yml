@@ -1,7 +1,7 @@
 version: "3"
 services: 
-  docker-desktop:
-    image: iopirahl/docker-desktop:1.0.2
+  halls_desktop:
+    image: piopirahl/docker-desktop:1.0.2
     container_name: halls-desktop 
     ports: 
       - 6901:6901
