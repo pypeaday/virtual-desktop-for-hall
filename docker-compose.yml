@@ -8,7 +8,6 @@ services:
     volumes:
       - "$PWD/config/.config:/home/dockeruser/.config:rw"
     env_file: .env
-    restart_policy: unless-stopped
     labels:
       traefik.enable: "True"
       traefik.http.routers.halls_desktop.rule: "Host(`halls-desktop.${DOMAIN}`)"
