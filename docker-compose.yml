@@ -1,0 +1,23 @@
+version: "3"
+services: 
+  docker-desktop:
+    image: iopirahl/docker-desktop:1.0.2
+    container_name: halls-desktop 
+    ports: 
+      - 6901:6901
+    pull: true
+    volumes:
+      - "$PWD/config/.config:/home/dockeruser/.config:rw"
+    env:
+      TZ: "America/Chicago"
+    env_file: .env
+    restart_policy: unless-stopped
+    labels:
+      traefik.enable: "True"
+      traefik.http.routers.halls_desktop.rule: "Host(`halls-desktop.${DOMAIN}`)"
+      traefik.http.routers.halls_desktop.tls.certresolver: "letsencrypt"
+      traefik.http.routers.halls_desktop.tls.domains[0].main: "${DOMAIN}"
+      traefik.http.routers.halls_desktop.tls.domains[0].sans: "*.${DOMAIN}"
+      traefik.http.routers.halls_desktop.middlewares: "halls_desktop_auth"
+      traefik.http.services.halls_desktop.loadbalancer.server.port: "6501"
+      traefik.http.middlewares.halls_desktop_auth.basicauth.users: "user:$$2y$$05$$LBZka/94dyb0S/ZPqN2ixeVy..2Sok0xruiw7AhwyrbsPNd.SLF.W"
