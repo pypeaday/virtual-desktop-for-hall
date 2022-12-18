@@ -8,8 +8,6 @@ services:
     pull: true
     volumes:
       - "$PWD/config/.config:/home/dockeruser/.config:rw"
-    env:
-      TZ: "America/Chicago"
     env_file: .env
     restart_policy: unless-stopped
     labels:
